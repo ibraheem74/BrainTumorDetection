@@ -11,9 +11,13 @@ logs/
 # Outputs
 outputs/
 
-# Upload folders
-static/uploads/
-static/predictions/
+# Ignore uploaded files but keep folders
+static/uploads/*
+!static/uploads/.gitkeep
+
+# Ignore generated prediction files but keep folder
+static/predictions/*
+!static/predictions/.gitkeep
 
 # Raw prediction
 raw_prediction.png
