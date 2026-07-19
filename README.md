@@ -1,34 +1,20 @@
 # 🧠 Brain Tumor Detection using Attention U-Net
 
-A deep learning web application for **Brain Tumor Detection and Segmentation** from MRI images using the **Attention U-Net** architecture.
+A deep learning-based web application for **Brain Tumor Detection and Segmentation** from MRI images using the **Attention U-Net** architecture.
 
-The application allows users to upload an MRI scan, predicts the tumor region, generates a segmentation mask, and displays the prediction confidence and tumor pixel count.
-
----
-
-## 📌 Features
-
-- Upload Brain MRI Images
-- Automatic Tumor Segmentation
-- Tumor Detection Result
-- Confidence Score
-- Tumor Pixel Count
-- User-friendly Flask Web Application
-- Attention U-Net Deep Learning Model
+The application allows users to upload a Brain MRI image, predicts the tumor region, generates a segmentation mask, and displays the prediction result with a confidence score and tumor pixel count.
 
 ---
 
-## 🖼️ Application Screenshots
+## ✨ Features
 
-### Home Page
-
-![Home Page](images/home.png)
-
----
-
-### Prediction Result
-
-![Prediction Result](images/prediction.png)
+- 🧠 Brain MRI Tumor Detection
+- 🎯 Tumor Segmentation using Attention U-Net
+- 📤 Upload MRI Images through a Flask Web Interface
+- 📊 Displays Prediction Confidence
+- 📍 Tumor Pixel Count
+- 🖼️ Segmentation Mask Generation
+- 💻 Simple and User-Friendly Interface
 
 ---
 
@@ -45,29 +31,42 @@ The application allows users to upload an MRI scan, predicts the tumor region, g
 
 ---
 
-## 🧠 Model Architecture
+## 🧠 Model Information
 
-- Attention U-Net
-- Input Image Size: **256 × 256 × 3**
-- Output: Binary Tumor Segmentation Mask
-- Optimizer: Adam
-- Loss Function: Binary Crossentropy + Dice Loss
+| Property | Value |
+|----------|-------|
+| Model | Attention U-Net |
+| Input Size | 256 × 256 × 3 |
+| Output | Binary Tumor Segmentation Mask |
+| Optimizer | Adam |
+| Loss Function | Binary Crossentropy + Dice Loss |
 
 ---
 
-## 📂 Project Structure
+# 📸 Application Screenshots
+
+## Home Page
+
+![Home Page](images/home.png)
+
+---
+
+## Prediction Result
+
+![Prediction Result](images/prediction.png)
+
+---
+
+# 📂 Project Structure
 
 ```text
 BrainTumorDetection/
 │
-├── app.py
-├── train.py
-├── evaluate.py
-├── predict.py
-├── plot_training.py
-├── README.md
-├── requirements.txt
-├── .gitignore
+├── app.py                  # Flask web application
+├── train.py                # Train the Attention U-Net model
+├── evaluate.py             # Evaluate trained model
+├── predict.py              # Prediction script
+├── plot_training.py        # Plot training graphs
 │
 ├── models/
 │   ├── attention_unet.py
@@ -82,28 +81,84 @@ BrainTumorDetection/
 │   └── index.html
 │
 ├── static/
+│   ├── css/
+│   │   └── style.css
+│   ├── uploads/
+│   └── predictions/
 │
-└── saved_models/
-    └── best_attention_unet.keras
+├── images/
+│   ├── home.png
+│   └── prediction.png
+│
+├── saved_models/
+│   └── best_attention_unet.keras (Generated after training)
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
 
 ---
 
-## 🚀 Installation
+# 📥 Dataset
 
-Clone the repository
+This project uses the **LGG MRI Segmentation Dataset**, which contains Brain MRI images and corresponding tumor segmentation masks.
+
+### Dataset Source
+
+- **Kaggle Dataset:** <https://www.kaggle.com/datasets/mateuszbuda/lgg-mri-segmentation>
+- **Reference Notebook:** <https://www.kaggle.com/code/donottalk/lgg-mri-segmentation>
+
+After downloading the dataset, organize it as follows:
+
+```text
+dataset/
+├── train/
+│   ├── images/
+│   └── masks/
+│
+├── val/
+│   ├── images/
+│   └── masks/
+│
+└── test/
+    ├── images/
+    └── masks/
+```
+
+---
+
+# 📥 Trained Model
+
+The trained Attention U-Net model is **not included** in this repository because the model file exceeds GitHub's maximum file size limit (100 MB).
+
+To use this project:
+
+1. Download the dataset.
+2. Train the model using `train.py`.
+3. After training, place the generated model inside:
+
+```text
+saved_models/
+└── best_attention_unet.keras
+```
+
+The Flask application automatically loads this model during prediction.
+
+---
+
+# 🚀 Getting Started
+
+## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/ibraheem74/BrainTumorDetection.git
-```
-
-Go to the project folder
-
-```bash
 cd BrainTumorDetection
 ```
 
-Install dependencies
+---
+
+## 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -111,46 +166,88 @@ pip install -r requirements.txt
 
 ---
 
-## ▶️ Run the Application
+## 3. Download the Dataset
 
-Start the Flask server
+Download the **LGG MRI Segmentation Dataset** from Kaggle and place it inside the project directory.
+
+Example:
+
+```text
+dataset/
+├── train/
+├── val/
+└── test/
+```
+
+---
+
+## 4. Train the Model
+
+Run the following command:
+
+```bash
+python train.py
+```
+
+After training, the model will be saved as:
+
+```text
+saved_models/
+└── best_attention_unet.keras
+```
+
+---
+
+## 5. Run the Flask Application
+
+Start the Flask server:
 
 ```bash
 python app.py
 ```
 
-Open your browser
+Open your browser and visit:
 
-```
+```text
 http://127.0.0.1:5000
 ```
 
-Upload a Brain MRI image and click **Predict** to generate the tumor segmentation mask.
+Upload a Brain MRI image and click **Predict**.
 
 ---
 
-## 📊 Output
+# 📊 Output
 
 The application displays:
 
 - Uploaded MRI Image
-- Predicted Tumor Mask
+- Predicted Tumor Segmentation Mask
 - Tumor Detection Result
 - Confidence Score
 - Tumor Pixel Count
 
 ---
 
-## 🔮 Future Improvements
+# 🔮 Future Improvements
 
+- Improve segmentation accuracy with additional training
 - Support multiple MRI image formats
-- Improve segmentation accuracy with larger datasets
-- Deploy the application on a cloud platform
-- Add Grad-CAM visualization for explainability
+- Deploy the application on cloud platforms
+- Add Grad-CAM visualization for explainable AI
+- Develop a responsive mobile-friendly interface
 
 ---
 
-## 👨‍💻 Author
+# ⚠️ Important Notes
+
+- The **dataset** is **not included** in this repository.
+- The **trained model** (`best_attention_unet.keras`) is **not included** due to GitHub's file size limitation.
+- Users must download the dataset and train the model before running the application.
+- Ensure the trained model is placed inside the `saved_models/` directory before starting the Flask application.
+
+---
+
+# 👨‍💻 Author
 
 **Ibraheem**
 
@@ -158,10 +255,16 @@ B.Tech Computer Science Engineering
 
 Dr. M.G.R. Educational and Research Institute
 
-GitHub: https://github.com/ibraheem74
+**GitHub:** https://github.com/ibraheem74
 
 ---
 
-## 📄 License
+# 📄 License
 
-This project is developed for educational and academic purposes.
+This project is developed for **educational and academic purposes**.
+
+---
+
+## ⭐ Support
+
+If you found this project helpful, consider giving it a **⭐ Star** on GitHub.
