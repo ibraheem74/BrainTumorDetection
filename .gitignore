@@ -24,3 +24,6 @@ __pycache__/
 
 # Models
 saved_models/
+
+# macOS
+.DS_Store
